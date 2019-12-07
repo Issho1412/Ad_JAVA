@@ -6,9 +6,10 @@ import java.util.List;
 public class Main {
     public static List<String> listPath = new ArrayList<>();
     public static List<File> listText = new ArrayList<>();
+    public static List<File> listChoose = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        delFileLikeContent("D:\\test", "New.txt");
+        delFileLikeContent("D:\\test", "Ntest1.txt");
     }
 
     public static String getContentFile(String filename) throws IOException {
@@ -34,19 +35,34 @@ public class Main {
         return isEqual;
     }
 
+    public static void isFileDel(String fileChoose){
+        for(int i = 0; i < listText.size(); i++){
+            if(fileChoose.equals(listText.get(i).getName()))
+                listChoose.add(listText.get(i));
+        }
+
+        for(int i = 0; i < listChoose.size(); i++){
+            System.out.println(listChoose.get(i));
+        }
+
+    }
+
     public static void delFileLikeContent(String folderPath, String fileName) throws IOException {
         getListFiles(folderPath);
+        isFileDel(fileName);
         String vlContent = "";
-        String vlPath = folderPath+ "\\" +fileName;
-        System.out.println(vlPath);
-        for(int i = 1; i < listText.size(); i++){
-           vlContent = listText.get(i).getName();
-           if(vlContent.equals(fileName) || findSameText(vlPath, listText.get(i).toString())){
-               System.out.println("I Have Deleted: " + listText.get(i));
-              listText.get(i).delete(); //is testing
-           }
+
+        for(int i = 0; i < listChoose.size(); i++){
+            String flag = listChoose.get(0).toString();
+            String vlName = listChoose.get(0).getName();
+            if(i != 0){
+                vlContent = listChoose.get(i).toString();
+                if(fileName.equals(vlName) && findSameText(flag, vlContent)){
+                    System.out.println("Have delete : " + listChoose.get(i));
+                    listChoose.get(i).delete();
+                }
+            }
         }
-        System.out.println("\n\n");
     }
 
     public static void getListFiles(String folderPath) throws IOException {
@@ -58,7 +74,6 @@ public class Main {
         }
         for (File f : files) {
             if (f.isFile()) {
-                listPath.add(f.getName());
                 listText.add(f);
             } else {
                 getListFiles(f.getPath());
