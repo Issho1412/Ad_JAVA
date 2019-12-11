@@ -1,7 +1,11 @@
 import com.sun.org.apache.regexp.internal.RE;
+import javafx.scene.paint.Stop;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,24 +30,26 @@ public class CasioWatch extends Canvas{
     private JPanel panelTime;
     private JLabel labelMinute;
     private JPanel panelSection;
+    private JButton btnStopMode;
     //Init global var
+    private JFrame frame2;
 
     public static ArrayList<String> listLink = new ArrayList<>();
     public CasioWatch() {
-    }
-
-
-    public void addLinkImage(){
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\0.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\1.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\2.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\3.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\4.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\5.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\6.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\7.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\8.png");
-        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\9.png");
+        ImageIcon imageNext = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\nextLeft.JPG").getImage().getScaledInstance(20, 60, Image.SCALE_SMOOTH));
+        btnStopMode.setBorder(BorderFactory.createEmptyBorder());
+        btnStopMode.setIcon(imageNext);
+        btnStopMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StopWatch stopWatch = new StopWatch();
+                stopWatch.InitImage();
+                frame2 = new JFrame("StopFrame");
+                MainShow.initFrame(frame2);
+                frame2.setContentPane(stopWatch.getRootStop());
+                MainShow.closeFrame(frame2);
+            }
+        });
     }
 
 
@@ -53,10 +59,9 @@ public class CasioWatch extends Canvas{
 
     public void InitImage(){
         // Init Image and SetBg
-
         ImageIcon imageHeader = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelHeader.png").getImage().getScaledInstance(310, 60, Image.SCALE_SMOOTH));
         labelHeader.setIcon(imageHeader);
-        ImageIcon imageLogo = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\LOGO.JPG").getImage().getScaledInstance(275, 50, Image.SCALE_SMOOTH));
+        ImageIcon imageLogo = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\LOGO.JPG").getImage().getScaledInstance(235, 50, Image.SCALE_SMOOTH));
         labelLogo.setIcon(imageLogo);
         ImageIcon imageLeft = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelLeft.png").getImage().getScaledInstance(10, 145, Image.SCALE_SMOOTH));
         labelLeft.setIcon(imageLeft);
@@ -95,6 +100,7 @@ public class CasioWatch extends Canvas{
         }
         return a;
     }
+
 
 
     public void resolveTime() {
@@ -138,6 +144,5 @@ public class CasioWatch extends Canvas{
             }
         };
         clock.start();
-
     }
 }
