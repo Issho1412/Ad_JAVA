@@ -7,7 +7,7 @@ public class MainShow {
         casioWatch.InitImage();
         casioWatch.resolveTime();
         JFrame frame = new JFrame("Casio");
-        frame.setPreferredSize(new Dimension(300, 400));
+        frame.setPreferredSize(new Dimension(310, 400));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setContentPane(casioWatch.getRootPanel());
         frame.pack();

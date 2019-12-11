@@ -2,6 +2,7 @@ import com.sun.org.apache.regexp.internal.RE;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -24,10 +25,25 @@ public class CasioWatch extends Canvas{
     private JPanel panelLogo;
     private JPanel panelTime;
     private JLabel labelMinute;
+    private JPanel panelSection;
     //Init global var
 
-
+    public static ArrayList<String> listLink = new ArrayList<>();
     public CasioWatch() {
+    }
+
+
+    public void addLinkImage(){
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\0.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\1.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\2.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\3.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\4.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\5.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\6.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\7.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\8.png");
+        listLink.add("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\9.png");
     }
 
 
@@ -37,22 +53,19 @@ public class CasioWatch extends Canvas{
 
     public void InitImage(){
         // Init Image and SetBg
-        ImageIcon imageHeader = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelHeader.png").getImage().getScaledInstance(300, 60, Image.SCALE_SMOOTH));
+
+        ImageIcon imageHeader = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelHeader.png").getImage().getScaledInstance(310, 60, Image.SCALE_SMOOTH));
         labelHeader.setIcon(imageHeader);
-       ImageIcon imageLogo = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\LOGO.JPG").getImage().getScaledInstance(270, 50, Image.SCALE_SMOOTH));
+        ImageIcon imageLogo = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\LOGO.JPG").getImage().getScaledInstance(275, 50, Image.SCALE_SMOOTH));
         labelLogo.setIcon(imageLogo);
         ImageIcon imageLeft = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelLeft.png").getImage().getScaledInstance(10, 145, Image.SCALE_SMOOTH));
         labelLeft.setIcon(imageLeft);
-    //    ImageIcon imageRight = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelRight.JPG").getImage().getScaledInstance(15, 130, Image.SCALE_SMOOTH));
+       // ImageIcon imageRight = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelRight.JPG").getImage().getScaledInstance(15, 130, Image.SCALE_SMOOTH));
        // labelRight.setIcon(imageRight);
-        ImageIcon imageSection = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelSection.JPG").getImage().getScaledInstance(270, 50, Image.SCALE_SMOOTH));
+        ImageIcon imageSection = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelSection.JPG").getImage().getScaledInstance(275, 50, Image.SCALE_SMOOTH));
         labelSection.setIcon(imageSection);
-        ImageIcon imageFooter = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelFooter.png").getImage().getScaledInstance(300, 60, Image.SCALE_SMOOTH));
+        ImageIcon imageFooter = new ImageIcon(new ImageIcon("C:\\Users\\huyhu\\IdeaProjects\\CasioWatch\\Image\\labelFooter.png").getImage().getScaledInstance(310, 60, Image.SCALE_SMOOTH));
         labelFooter.setIcon(imageFooter);
-
-        //labelHour.setBounds(0, 0 ,50, 50);
-       // ImageIcon
-       // labelHour.setIcon();
     }
 
     public String getDayOfWeek(int n){
